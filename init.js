@@ -1,4 +1,5 @@
 import app from "./app"; //default로 export시 이렇게 가능
+import "./db";
 
 const PORT = 3000;
 
