@@ -1,5 +1,3 @@
-//create the shape of video
-//model+shcema
 //we will save a video's link(not byte file)
 import mongoose from "mongoose";
 import { stringLiteral } from "babel-types";
