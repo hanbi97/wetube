@@ -1,7 +1,7 @@
 import routes from "../routes";
 
 export const getJoin =(req,res)=>{
-    res.render("join");
+    res.render("join",{pageTitle:"Join"});
 };
 
 export const postJoin =(req,res)=>{
@@ -21,7 +21,7 @@ export const postJoin =(req,res)=>{
 };
 
 export const getLogin=(req,res)=>{
-    res.render("login");
+    res.render("login",{pageTitle:"Login"});
 }
 export const postLogin=(req,res)=>{
     //to do: check users's password in database
@@ -32,6 +32,6 @@ export const logout=(req,res)=>{
     //to do: process logout
     res.redirect(routes.home);
 }
-export const userDetail = (req,res)=>res.render("userDetail");
-export const editProfile = (req,res)=>res.render("editProfile");
-export const chagnePassword = (req,res)=>res.render("changePassword");
+export const userDetail = (req,res)=>res.render("userDetail",{pageTitle:"userDetail"});
+export const editProfile = (req,res)=>res.render("editProfile",{pageTitle:"editProfile"});
+export const chagnePassword = (req,res)=>res.render("changePassword",{pageTitle:"changePassword"});
