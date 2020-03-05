@@ -1,17 +1,35 @@
 # WeTube
 https://hanbi97.tistory.com/category/CS/Web
 
-Cloning Youtube with Vanilla and NodeJS
+Cloning Youtube with Vanilla and NodeJS and MongoDB
 
 ## Pages:
 
-- [ ] Home
+- [x] Home
 - [x] Join
 - [x] Login
 - [x] Search
-- [ ] User Detail
+- [x] User Detail
 - [x] Edit Profile
 - [x] Change Password
 - [x] Upload 
-- [ ] Video Detail
+- [x] Video Detail
 - [x] Edit Video
+
+## Controllers
+### User
+- [] Join
+- [] Login
+- [] Logout
+- [] UserDetail
+- [] EditProfile
+- [] ChangePassword
+
+### Video
+- [x] Home
+- [x] Search
+- [x] Upload
+- [x] VideoDetail
+- [x] EditVideo
+- [x] DeleteVideo
+  
