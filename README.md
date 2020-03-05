@@ -18,12 +18,12 @@ Cloning Youtube with Vanilla and NodeJS and MongoDB
 
 ## Controllers
 ### User
-- [] Join
-- [] Login
-- [] Logout
-- [] UserDetail
-- [] EditProfile
-- [] ChangePassword
+- [ ] Join
+- [ ] Login
+- [ ] Logout
+- [ ] UserDetail
+- [ ] EditProfile
+- [ ] ChangePassword
 
 ### Video
 - [x] Home
