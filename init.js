@@ -2,8 +2,10 @@ import app from "./app"; //default로 export시 이렇게 가능
 import "./db";
 import dotenv from "dotenv";
 dotenv.config();
-import Video from "./models/Video";
-import Comment from "./models/Comment";
+
+import "./models/Video";
+import "./models/Comment";
+import "./models/User";
 
 const PORT = process.env.PORT || 3000;
 
