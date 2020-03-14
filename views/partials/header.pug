@@ -7,7 +7,7 @@ header.header
             input(type="text", placeholder="What do you want to know?", name='term')
     .header_column
         ul 
-            if !user.isAuthenticated
+            if !user
                 li
                     a(href=routes.join) JOIN
                 li

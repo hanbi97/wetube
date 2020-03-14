@@ -1,37 +1,83 @@
 import routes from "../routes";
+import User from "../models/User";
+import passport from "passport";
 
-export const getJoin =(req,res)=>{
-    res.render("join",{pageTitle:"Join"});
+export const getJoin = (req, res) => {
+  res.render("join", { pageTitle: "Join" });
 };
 
-export const postJoin =(req,res)=>{
-    //get join information
-    const{
-        body: {name, email, password, password2}
-    }=req;
-    //check the password == password2
-    if(password!=password2){
-        res.status(400);
-    }
-    else{
-        //to do: register user, user login
-        res.redirect(routes.home);
-    }
+export const postJoin = async (req, res, next) => {
+  //get join information
+  const {
+    body: { name, email, password, password2 }
+  } = req;
+  //check the password == password2
+  if (password != password2) {
+    res.status(400);
     res.render("join");
+  } else {
+    try {
+      const user = await User({
+        name,
+        email
+      }); //create: create user + save in db
+      await User.register(user, password);
+      next();
+    } catch (error) {
+      console.log(error);
+      res.redirect(routes.home);
+    }
+  }
 };
 
-export const getLogin=(req,res)=>{
-    res.render("login",{pageTitle:"Login"});
-}
-export const postLogin=(req,res)=>{
-    //to do: check users's password in database
-    res.redirect(routes.home);
+export const getLogin = (req, res) => {
+  res.render("login", { pageTitle: "Login" });
 };
 
-export const logout=(req,res)=>{
-    //to do: process logout
-    res.redirect(routes.home);
-}
-export const userDetail = (req,res)=>res.render("userDetail",{pageTitle:"userDetail"});
-export const editProfile = (req,res)=>res.render("editProfile",{pageTitle:"editProfile"});
-export const chagnePassword = (req,res)=>res.render("changePassword",{pageTitle:"changePassword"});
+export const postLogin = passport.authenticate('local',{
+    failureRedirect:routes.login,
+    successRedirect: routes.home
+});
+
+export const githubLogin = passport.authenticate('github');
+
+export const postGithubLogin=(req,res)=>{
+  res.redirect(routes.home);
+};
+
+export const githubLoginCallback= async(_, __, profile, cb)=> { //this _ name means that this variable is not used
+  const{_json:{id,avatar_url,name,email}}=profile; //get the profile info and make a user
+  try{
+    const user = await User.findOne({email});
+    if(user){
+      //if a user is joined with an email+password and clicked login with github 
+      //i find the user email matches with github and update some info of the user
+      user.githubId = id;
+      user.save();
+      return cb(null,user);
+    }else{
+      //make new user with github info
+      const newUser = await User.create({
+        email,
+        name,
+        githubId:id,
+        avatarUrl: avatar_url
+      });
+      return cb(null,newUser);
+    }
+  }catch(error){
+    return cb(error);
+  }
+
+};
+
+export const logout = (req, res) => {
+  req.logout();
+  res.redirect(routes.home);
+};
+export const userDetail = (req, res) =>
+  res.render("userDetail", { pageTitle: "userDetail" });
+export const editProfile = (req, res) =>
+  res.render("editProfile", { pageTitle: "editProfile" });
+export const chagnePassword = (req, res) =>
+  res.render("changePassword", { pageTitle: "changePassword" });
