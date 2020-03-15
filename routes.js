@@ -24,6 +24,10 @@ const ME ="/me";
 const GITHUB="/auth/github";
 const GITHUB_CALLBACK="/auth/github/callback";
 
+//Facebook
+const FACEBOOK ="/auth/facebook";
+const FACEBOOK_CALLBACK ="/auth/facebook/callback";
+
 //object to export
 const routes = {
     home: HOME,
@@ -68,7 +72,9 @@ const routes = {
     },
     github:GITHUB,
     githubcallback:GITHUB_CALLBACK,
-    me:ME
+    me:ME,
+    facebook:FACEBOOK,
+    facebookcallback:FACEBOOK_CALLBACK
 };
 
 export default routes;
