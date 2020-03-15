@@ -46,7 +46,7 @@ export const postGithubLogin=(req,res)=>{
 };
 
 export const githubLoginCallback= async(_, __, profile, cb)=> { //this _ name means that this variable is not used
-  const{_json:{id,avatar_url,name,email}}=profile; //get the profile info and make a user
+  const{_json:{id,avatar_url:avatarUrl,name,email}}=profile; //get the profile info and make a user
   try{
     const user = await User.findOne({email});
     if(user){
@@ -61,7 +61,7 @@ export const githubLoginCallback= async(_, __, profile, cb)=> { //this _ name me
         email,
         name,
         githubId:id,
-        avatarUrl: avatar_url
+        avatarUrl
       });
       return cb(null,newUser);
     }
@@ -75,8 +75,27 @@ export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
-export const userDetail = (req, res) =>
+
+export const getMe =(req,res)=>{
+  res.render("userDetail", { pageTitle: "userDetail", user:req.user});
+  //passport can put the user in the session
+};
+
+export const userDetail =async (req, res) => {
+  const{
+    params:{id}
+  }=req;
+  try{
+    const user = await User.findById(id);
+    res.render("userDetail",{pageTitle:"userDetail",user});
+
+  }catch(error){
+    console.log(error);
+    res.redirect(routes.home);
+  }
   res.render("userDetail", { pageTitle: "userDetail" });
+};
+
 export const editProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "editProfile" });
 export const chagnePassword = (req, res) =>

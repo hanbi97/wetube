@@ -18,6 +18,7 @@ const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO ="/:id/edit";
 const DELETE_VIDEO ="/:id/delete";
+const ME ="/me";
 
 //Github
 const GITHUB="/auth/github";
@@ -66,7 +67,8 @@ const routes = {
         }
     },
     github:GITHUB,
-    githubcallback:GITHUB_CALLBACK
+    githubcallback:GITHUB_CALLBACK,
+    me:ME
 };
 
 export default routes;
