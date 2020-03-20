@@ -10,6 +10,7 @@ import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter"; //default로 export 안해서 이렇게 함
 import videoRouter from "./routers/videoRouter"; //default로 export 안해서 이렇게 함
+import apiRouter from "./routers/apiRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
 import dotenv from "dotenv";
@@ -36,12 +37,14 @@ app.use(
     store: new CookieStore({mongooseConnection:mongoose.connection})
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-
+app.use(routes.api,apiRouter);
 export default app;
