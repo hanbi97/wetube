@@ -222,7 +222,8 @@ input[type="submit"] {
   .form-container form {
     width: 100%;
     max-width: 320px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    margin-left: -2%; }
     .form-container form input:not([type="file"]),
     .form-container form .fileUpload {
       display: block;
@@ -242,7 +243,8 @@ input[type="submit"] {
       margin-bottom: 25px; }
     .form-container form input[type="submit"] {
       background-color: #3498db;
-      color: white; }
+      color: white;
+      margin-left: 3%; }
   .form-container a {
     max-width: 320px;
     width: 100%; }
@@ -380,6 +382,15 @@ input[type="submit"] {
     .videoPlayer .videoPlayer__controls i {
       font-size: 25px;
       cursor: pointer; }
+
+.record-container {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 30px; }
+  .record-container video {
+    background-color: #444444;
+    width: 100%;
+    margin-bottom: 20px; }
 
 .home-videos {
   display: grid;
