@@ -1,7 +1,6 @@
 .video-detail__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     .video__info {
       width: 100%;
       max-width: 1000px;
@@ -15,6 +14,13 @@
       .video__description {
         display: block;
         margin-bottom: 15px;
+        
+      }
+      .video__author {
+        display: block;
+        a {
+          color: #3498db;
+        }
       }
       .video__title {
         font-size: 22px;
