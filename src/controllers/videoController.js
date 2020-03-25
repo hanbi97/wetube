@@ -32,11 +32,11 @@ export const getUpload = (req,res) => {
 export const postUpload = async(req,res) => {
     const{ 
         body:{title, description},
-        file: {path}
+        file: {location}
      }=req;
-   
+     try{
      const newVideo = await Video.create({
-         fileUrl: path,
+         fileUrl: location,
          title,
          description,
          creator: req.user.id
@@ -44,7 +44,10 @@ export const postUpload = async(req,res) => {
      req.user.videos.push(newVideo.id);
      req.user.save();
     res.redirect(routes.videoDetail(newVideo.id));
-    
+     }catch(error){
+         console.log(error);
+         res.redirect(routes.home);
+     }
 };
 
 export const videoDetail = async(req,res) => {
@@ -137,10 +140,10 @@ export const postAddComment = async(req,res)=>{
     }=req;
     try{
         const video = await Video.findById(id);
-        console.log(video);
         const newComment = await Comment.create({
             text:comment,
-            creator:user.id
+            creator:user.id,
+            createdAt: Date.now()
         });
         video.comments.push(newComment.id);
         video.save();

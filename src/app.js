@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter"; //default로 export 안해서 이렇게 함
@@ -23,8 +24,8 @@ const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.set("view engine", "pug");
-app.use("/uploads", express.static("uploads")); //directory에서 file 전달하는 middleware
-app.use("/static", express.static("static"));
+app.set("views",path.join(__dirname,"views"));
+app.use("/static", express.static(path.join(__dirname,"static")));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -20,6 +20,7 @@ const handleSubmit = (event) => {
     const commentInput = addCommentForm.querySelector("input");
     const comment = commentInput.value;
     sendComment(comment);
+    console.log(comment);
     commentInput.value = "";
 }
 

@@ -108,3 +108,5 @@ dist
 .vscode-test
 package-lock.json
 uploads
+static
+build

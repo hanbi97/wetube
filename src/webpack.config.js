@@ -33,7 +33,7 @@ const config ={
                         loader:"postcss-loader", // 2nd. transform css to solve compatible problem(ex. with i.e, prefix..)
                         options:{
                             plugins(){
-                                return[autoprefixer({browsers:"cover 99.5%"})];
+                                return[autoprefixer({overrideBrowserslist:"cover 99.5%"})];
                             }
                         }
                     },
