@@ -9,6 +9,7 @@
   "author": "hanbi",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/polyfill": "^7.8.7",
