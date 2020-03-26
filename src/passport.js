@@ -22,6 +22,8 @@ passport.use(
     githubLoginCallback
   )
 );
+console.log(GithubStrategy.clientID);
+console.log(GithubStrategy.callbackURL);
 
 passport.use(
     new FacebookStrategy(
