@@ -44,6 +44,7 @@ export const postLogin = passport.authenticate('local', {
 export const githubLogin = passport.authenticate('github');
 
 export const postGithubLogin = (req, res) => {
+    console.log("hey postGithub");
     res.redirect(routes.home);
 };
 
@@ -57,12 +58,14 @@ export const githubLoginCallback = async (_, __, profile, cb) => { //this _ name
         }
     } = profile; //get the profile info and make a user
     try {
+        console.log("callback github hhhhhhh");
         const user = await User.findOne({email});
         if (user) {
             // if a user is joined with an email+password and clicked login with github i
             // find the user email matches with github and update some info of the user
             user.githubId = id;
             user.save();
+            console.log("callback github end");
             return cb(null, user);
         } else {
             //make new user with github info
