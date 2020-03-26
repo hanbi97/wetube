@@ -41,7 +41,10 @@ export const postLogin = passport.authenticate('local', {
     successRedirect: routes.home
 });
 
-export const githubLogin = passport.authenticate('github');
+export const githubLogin = ()=>{
+    console.log('hey!!!!');
+    passport.authenticate('github');
+}
 
 export const postGithubLogin = (req, res) => {
     console.log("hey postGithub");
