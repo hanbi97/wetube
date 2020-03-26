@@ -114,7 +114,7 @@ function init(){//check the user is in here
     volumeBtn.addEventListener("click",handleMute);
     fullBtn.addEventListener("click",goFullScreen);
     fullBtn.addEventListener("click",exitFullScreen);
-    videoPlayer.addEventListener("loadedmetadata",setTotalTime);
+    videoPlayer.addEventListener("loadedmetadata",setTotalTime());
     videoPlayer.addEventListener("ended",handleEnded);
     volumeRange.addEventListener("input",handleDrag);
 }
