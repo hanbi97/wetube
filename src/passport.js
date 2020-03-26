@@ -20,8 +20,7 @@ passport.use(
       : `http://localhost:3000${routes.githubCallback}`
     },
     githubLoginCallback
-  ),
-  console.log('here')
+  )
 );
 
 passport.use(
