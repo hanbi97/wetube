@@ -27,7 +27,7 @@ console.log({
   clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
       callbackURL: process.env.PRODUCTION
-      ? `https://agile-spire-64743.herokuapp.com${routes.githubCallback}`
+      ? `https://agile-spire-64743.herokuapp.com${routes.githubcallback}`
       : `http://localhost:3000${routes.githubCallback}`
 });
 
