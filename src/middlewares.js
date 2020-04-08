@@ -23,10 +23,10 @@ const multerVideo =multer({
 
 const multerAvatar = multer({
     storage:multerS3({
-    s3,
-    acl:'public-read',
-    bucket: "wetubehanbi/avatar"
-})
+        s3,
+        acl:'public-read',
+        bucket: "wetubehanbi/avatar"
+    })
 });
 
 /*const multerVideo = multer({ dest: "uploads/videos/" });
