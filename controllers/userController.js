@@ -64,7 +64,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => { //this _ name
         console.log("callback github hhhhhhh");
         const user = await User.findOne({email});
         if (user) {
-            // if a user is joined with an email+password and clicked login with github i
+            // if a user joined with an email+password and clicked login with github i
             // find the user email matches with github and update some info of the user
             user.githubId = id;
             user.save();
@@ -81,39 +81,39 @@ export const githubLoginCallback = async (_, __, profile, cb) => { //this _ name
 
 };
 
-export const facebookLogin = passport.authenticate('facebook');
+// export const facebookLogin = passport.authenticate('facebook');
 
-export const postFacebookLogin = (req, res) => {
-    res.redirect(routes.home);
-};
+// export const postFacebookLogin = (req, res) => {
+//     res.redirect(routes.home);
+// };
 
-export const facebookLoginCallback = async (_, __, profile, cb) => {
-    const {
-        _json: {
-            id,
-            name,
-            email
-        }
-    } = profile;
-    try {
-        const user = await User.findOne({email});
-        if (user) {
-            user.facebookId = id;
-            user.save();
-            return cb(null, user);
-        } else {
-            //make new user with github info
-            const newUser = await User.create({
-                email, name, facebookId: id,
-                //facebook use graph API for profile photo
-                avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
-            });
-            return cb(null, newUser);
-        }
-    } catch (error) {
-        return cb(error);
-    }
-};
+// export const facebookLoginCallback = async (_, __, profile, cb) => {
+//     const {
+//         _json: {
+//             id,
+//             name,
+//             email
+//         }
+//     } = profile;
+//     try {
+//         const user = await User.findOne({email});
+//         if (user) {
+//             user.facebookId = id;
+//             user.save();
+//             return cb(null, user);
+//         } else {
+//             //make new user with github info
+//             const newUser = await User.create({
+//                 email, name, facebookId: id,
+//                 //facebook use graph API for profile photo
+//                 avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+//             });
+//             return cb(null, newUser);
+//         }
+//     } catch (error) {
+//         return cb(error);
+//     }
+// };
 
 export const logout = (req, res) => {
     req.logout();

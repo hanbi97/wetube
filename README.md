@@ -1,5 +1,5 @@
 # WeTube
-https://hanbi97.tistory.com/category/CS/Web
+https://hanbi97.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/Youtube%20Clone
 
 Cloning Youtube with Vanilla and NodeJS and MongoDB
 

@@ -76,7 +76,7 @@ const routes = {
         }
     },
     github:GITHUB,
-    githubcallback:GITHUB_CALLBACK,
+    githubCallback:GITHUB_CALLBACK,
     me:ME,
     facebook:FACEBOOK,
     facebookcallback:FACEBOOK_CALLBACK,
